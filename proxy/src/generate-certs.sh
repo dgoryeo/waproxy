@@ -11,7 +11,7 @@ echo
 
 export CA_KEY="ca-key.pem"
 export CA_CERT="ca.pem"
-export CA_SUBJECT="whatsapp.selfsigned"
+export CA_SUBJECT="`openssl rand -hex 12`.selfsigned"
 export CA_EXPIRE="36500" # 100 years
 
 export SSL_CONFIG="openssl.cnf"
@@ -21,11 +21,15 @@ export SSL_CERT="cert.pem"
 export SSL_SIZE="2048"
 export SSL_EXPIRE="3650" # 10 years
 
-export SSL_SUBJECT="proxy.whatsapp.net"
+export SSL_SUBJECT="`openssl rand -hex 12`.net"
 export SSL_DNS=${SSL_DNS}
 export SSL_IP=${SSL_IP}
 
 export DEBUG=${DEBUG:=1}
+
+echo "==== SSL and CA SUBJECTS PRINT BELOW: ===="
+echo $SSL_SUBJECT 
+echo $CA_SUBJECT 
 
 echo "--> Certificate Authority"
 
